@@ -1,0 +1,6 @@
+include:
+  - cfg/inverted_pendulum/base/train_dropout.yaml
+  - cfg/inverted_pendulum/teachers/all_other_gravity_trained.yaml
+  - cfg/behavior_policies/acteach.yaml
+
+experiment_name: allothergravity_trained_ours

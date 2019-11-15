@@ -1,0 +1,6 @@
+include:
+  - cfg/inverted_pendulum/base/train_dropout.yaml
+  - cfg/inverted_pendulum/teachers/default_trained.yaml
+  - cfg/behavior_policies/acteach.yaml
+
+experiment_name: default_trained_ours
