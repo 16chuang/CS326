@@ -1,0 +1,4 @@
+include:
+  - cfg/inverted_pendulum/base/train_dropout.yaml
+
+experiment_name: only_student
