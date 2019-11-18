@@ -8,7 +8,7 @@ class PPO2Agent(TeacherPolicy):
     def __init__(self, suffix):
 
         self.model = PPO2.load(
-            '{}/trained_models/InvertedPendulum-v2/PPO2_{}'.format(
+            '{}/trained_models/InvertedPendulum-v2/PPO2_{}.pkl'.format(
                 os.path.dirname(__file__), suffix))
 
     def __call__(self, obs):

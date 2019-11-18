@@ -5,8 +5,9 @@ import gym
 import numpy as np
 import tensorflow as tf
 from stable_baselines.common.policies import MlpPolicy
+from stable_baselines.ddpg.policies import MlpPolicy as DDPGMlpPolicy
 from stable_baselines.common.vec_env import DummyVecEnv
-from stable_baselines import PPO2
+from stable_baselines import PPO2, DDPG
 
 
 def evaluate(model, num_steps=1000, render=False):
@@ -46,17 +47,17 @@ if __name__ == '__main__':
     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
     # Make environment
-    model_env_name = 'InvertedPendulumGravity50-v2'
-    env_name = 'InvertedPendulumGravity50-v2'
+    model_env_name = 'InvertedPendulumDefault-v2'
+    env_name = 'InvertedPendulumDefault-v2'
     env = gym.make('custom_envs:{}'.format(env_name))
     env = DummyVecEnv([lambda: env])
     env.reset()
 
     # Load agents
     # random_agent = PPO2(MlpPolicy, env)
-    saved_ppo = PPO2.load('models/{}/{}.zip'.format(model_env_name,
-                                                'PPO2_2019-11-14_161834.pkl'))
+    saved_model = PPO2.load('../ac-teach/src/rl_with_teachers/teachers/trained_models/InvertedPendulum-v2/PPO2_default.pkl')
+    # saved_model = DDPG.load('models/{}/{}'.format(model_env_name,
+    #                                             'DDPG_2019-11-17_050341.pkl'))
 
     # Evaluate
-    print('Saved PPO:')
-    evaluate(saved_ppo, num_steps=1000, render=True)
+    evaluate(saved_model, num_steps=500, render=True)
