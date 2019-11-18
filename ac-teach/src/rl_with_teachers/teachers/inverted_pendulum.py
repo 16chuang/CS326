@@ -13,4 +13,5 @@ class PPO2Agent(TeacherPolicy):
 
     def __call__(self, obs):
         action, _states = self.model.predict(obs)
+        action /= 6.0
         return action
