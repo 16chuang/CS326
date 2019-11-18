@@ -36,7 +36,7 @@ if __name__ == '__main__':
     os.makedirs('./logs/{}'.format(env_name), exist_ok=True)
     os.makedirs('./models/{}'.format(env_name), exist_ok=True)
     run_name = '{}_{}'.format(
-        'DDPG',
+        agent,
         datetime.now(pytz.timezone('US/Pacific')).strftime("%Y-%m-%d_%H%M%S"))
 
     if agent == 'DDPG':
